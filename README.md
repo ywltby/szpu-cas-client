@@ -15,6 +15,7 @@
 
 ## ⚠ 温馨提示
 在提出Issues或提交Pull requests切勿把暴露个人敏感信息，包括但不限于用户名，密码，学号，API Key等。
+请勿使用edu邮箱提交任何PR！
 
 ## Install 
 ```sh
