@@ -11,12 +11,12 @@ cas = credential.ClientAuth()
 # 用户名和密码认证CAS凭证
 username = '21234567'
 password = 'passwd1234@'
-cas.cas_login(username, password)
+cas.login(username, password)
 
 # 手机验证码认证CAS凭证
 # mobile = "13800138000"
-# cas.cas_login_sms_send(mobile)
-# cas.cas_login_sms(input('请输入验证码：'))
+# cas.login_sms_send(mobile)
+# cas.login_sms(input('请输入验证码：'))
 
 # 读取文件中的CAS凭证
 # cas_cookie = json.loads(open('cas_cookie.json', 'r').read())

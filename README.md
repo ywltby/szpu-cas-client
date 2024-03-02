@@ -14,13 +14,14 @@
 请使用者自行判断具体场景是否适合使用该程序，使用该程序造成的问题或后果由使用者自行承担！
 
 ## ⚠ 温馨提示
-在提出Issues或提交Pull requests切勿把暴露个人敏感信息，包括但不限于用户名，密码，学号，API Key等。
+- 在提出Issues或提交Pull requests切勿把暴露个人敏感信息，包括但不限于用户名，密码，学号，API Key等。
+- 因authserver系统频繁更新原因，代码可能经常需要更新，建议关注本项目的动态。
 
 ## Install 
 ```sh
 git clone https://github.com/HozukiKaede/szpu-cas-client
 ```
-## Usage 
+## Usage
 
 ```python
 from szpu_cas_client.cas import credential
@@ -29,7 +30,7 @@ from szpu_cas_client.app import app
 # 用户名和密码认证CAS凭证
 username = '21234567'
 password = 'passwd1234@'
-cas.cas_login(username, password)
+cas.login(username, password)
 
 # 认证业务系统
 url = "https://i.szpt.edu.cn"

@@ -87,7 +87,7 @@ class ClientAuth:
         print('尝试验证码自动验证失败')
         return False
 
-    def cas_login(self, username, password):
+    def login(self, username, password):
         self.username = username
         self.password = password
         # 登录
@@ -119,7 +119,8 @@ class ClientAuth:
         self.logged_in = True
         return self.session.cookies.get_dict()
 
-    def cas_login_sms_send(self, mobile):
+    def login_sms_send(self, mobile):
+        # 发送短信验证码
         self.mobile = mobile
         # 先自动滑动验证码
         self.decrypt_captcha()
@@ -137,8 +138,8 @@ class ClientAuth:
             print('短信验证码发送失败')
             return False
 
-    def cas_login_sms(self, sms_code):
-        # 登录
+    def login_sms(self, sms_code):
+        # 短信方式登录
         url = self.domain + '/authserver/login'
         form_data = self.required_cookie
         form_data.update({
