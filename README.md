@@ -15,7 +15,6 @@
 
 ## ⚠ 温馨提示
 在提出Issues或提交Pull requests切勿把暴露个人敏感信息，包括但不限于用户名，密码，学号，API Key等。
-请勿使用edu邮箱提交任何PR！
 
 ## Install 
 ```sh
@@ -50,9 +49,13 @@ print(response.json())
 
 ## Author
 
-👤 **HozukiKaede**
+👤 **HozukiKaede 穗月枫**
+* 作者
+* Github: [@HozukiKaede](https://github.com/HozukiKaede/)
 
-* Github: [@HozukiKaede](https://github.com/HozukiKaede/szpu-cas-client)
+👤 **凉宫百合子**
+* 开发者，Kōsaka kirino小桐桐，感谢贡献图像识别模块的开发（为大家节省了GPU/RAM，作者差点要上神经网络了）
+* Bilibili: [@凉宫百合子](https://space.bilibili.com/12913274)
 
 ## 🤝 Contributing
 
