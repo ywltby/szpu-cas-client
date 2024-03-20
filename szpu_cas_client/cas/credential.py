@@ -11,7 +11,7 @@ from szpu_cas_client.toolkit.common import request_session
 
 # 创建认证客户端类,request库的封装成 session
 class ClientAuth:
-    def __init__(self, domain="https://authserver.szpt.edu.cn", debug: bool = False):
+    def __init__(self, domain="https://authserver.szpu.edu.cn", debug: bool = False):
         self.domain = domain
         self.username = None
         self.password = None
