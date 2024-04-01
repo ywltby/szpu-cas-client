@@ -1,12 +1,13 @@
-import json
-import random
 import os
+import json
 import time
+import random
 import requests
-from lxml import etree
 import execjs
-from szpu_cas_client.toolkit.decrypt_sliding_verification import SlidingVerification
+from lxml import etree
+from loguru import logger
 from szpu_cas_client.toolkit.common import request_session
+from szpu_cas_client.toolkit.decrypt_sliding_verification import SlidingVerification
 
 
 # 创建认证客户端类,request库的封装成 session
@@ -55,7 +56,7 @@ class ClientAuth:
         url = self.domain + '/authserver/checkNeedCaptcha.htl'
         response = self.session.get(url=url, params={'username': self.username}).json()
         if response['isNeed'] is True:
-            print('需要验证码')
+            logger.error('需要验证码')
             status = self.decrypt_captcha()
             if status:
                 return True
@@ -75,16 +76,16 @@ class ClientAuth:
             canvas_length = decrypt['canvasLength']
             # 添加一定的偏移量 防止被识别为机器人
             move_length = decrypt['moveLength'] + random.randint(1, 5)
-            print('验证码宽度:', canvas_length)
-            print('滑动距离:', move_length)
+            logger.debug('验证码宽度:', canvas_length)
+            logger.debug('滑动距离:', move_length)
             # 提交滑动验证码
             url = self.domain + '/authserver/common/verifySliderCaptcha.htl'
             data = {'canvasLength': canvas_length, 'moveLength': move_length}
             response = self.session.post(url, data=data).json()
             if response['errorCode'] == 1 and response['errorMsg'] == 'success':
-                print('验证码自动验证通过')
+                logger.info('验证码自动验证通过')
                 return True
-        print('尝试验证码自动验证失败')
+        logger.error('尝试验证码自动验证失败')
         return False
 
     def login(self, username, password):
@@ -130,12 +131,12 @@ class ClientAuth:
         mobile_encrypt = self.crypto_password(mobile, 'rjBFAaHsNkKAhpoi')
         data = {'mobile': mobile_encrypt,'captcha':''}
         response = self.session.post(url, data=data).json()
-        print(response)
+        logger.debug(response)
         if response['code'] == 'success':
-            print('短信验证码发送成功')
+            logger.info('短信验证码发送成功')
             return True
         else:
-            print('短信验证码发送失败')
+            logger.info('短信验证码发送失败')
             return False
 
     def login_sms(self, sms_code):
